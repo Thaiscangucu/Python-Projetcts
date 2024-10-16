@@ -1,0 +1,61 @@
+import requests
+from datetime import datetime
+
+USERNAME = "thaiscangucu"
+TOKEN = "jbfjjtmds124"
+GRAPH_ID = "graph2"
+GRAPH_URL = "https://pixe.la/v1/users/thaiscangucu/graphs/graph2.html"
+
+
+# Pixaela
+pixaela_endpoint = "https://pixe.la/v1/users"
+user_params = {
+    "token": TOKEN,
+    "username": USERNAME,
+    "agreeTermsOfService": "yes",
+    "notMinor": "yes",
+}
+# response = requests.post(url=pixaela_endpoint, json=user_params)
+# print(response.text)
+
+
+# Graph
+graph_endpoint = f"{pixaela_endpoint}/{USERNAME}/graphs"
+headers = {
+    "X-USER-TOKEN": TOKEN
+}
+graph_params = {
+    "id": "graph2",
+    "name": "Reading Graph",
+    "unit": "Pages",
+    "type": "int",
+    "color": "shibafu",
+}
+# graph_response = requests.post(url=graph_endpoint, json=graph_params, headers=headers)
+# print(graph_response.text)
+
+
+# Pixel
+pixel_endpoint = f"{pixaela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}"
+today = datetime.now()
+pixel_data = {
+    "date": today.strftime("%Y%m%d"),
+    "quantity": input("How many pages have read today? "),
+}
+pixel_response = requests.post(url=pixel_endpoint, json=pixel_data, headers=headers)
+print(pixel_response.text)
+
+
+# Updating a pixel
+# update_endpoint = f"{pixaela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/20241015"
+# new_pixel_data = {
+#     "quantity": "12"
+# }
+# updated_response = requests.put(url=update_endpoint, json=new_pixel_data, headers=headers)
+# print(updated_response.text)
+
+
+# Deleting a pixel
+# delete_endpoint = f"{pixaela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/20241016"
+# delete_pixel = requests.delete(url=delete_endpoint, headers=headers)
+# print(delete_pixel.text)
