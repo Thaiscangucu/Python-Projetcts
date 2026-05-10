@@ -1,4 +1,4 @@
-# Coffee Machine (OOP)
+# Coffee Machine
 
 This project is a version of the Coffee Machine program developed during the "100 Days of Code: The Complete Python Pro Bootcamp". It focuses on transitioning from procedural programming to Object-Oriented Programming (OOP) by using multiple classes to manage machine resources, menus, and payments.
 
